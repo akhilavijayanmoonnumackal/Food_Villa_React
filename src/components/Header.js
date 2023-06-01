@@ -33,19 +33,25 @@ const Header = () => {
             <Title/>
             {/* <h1>{title}</h1> */}
             {/* <button onClick={() => setTitle("New Food App")}>Change Title</button> */}
-            <div className="nav-items">
+            <div className="nav-items" >
                 <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                     <li>Cart</li>
+                    {/* <Link to="/login"><li>Login</li></Link> */}
                 </ul>
             </div>
+            <ul>
+            <Link to="/login"><li>
                 {isLoggedIn ? (
                     <button onClick={() => setIsLoggedIn(false)}>Logout</button> 
                     ) : ( 
                     <button onClick={() => setIsLoggedIn(true)}>Login</button>
                 )}
+                </li>
+                </Link>
+            </ul>
         </div>
     );
 };
