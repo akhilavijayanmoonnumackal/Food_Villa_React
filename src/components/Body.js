@@ -4,26 +4,20 @@ import RestrauntCard from './RestrauntCard';
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
-function filterData(searchText, restaurants) {
-    
-    const filterData = restaurants.filter((restaurant) => 
-        restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())        
-    );
-    return filterData;
-}
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    
     //const searchText = "KFC";
-
     //searchText is a local state variable
     const [searchText, setSearchText] = useState("");   //to create state variable
 
     // console.log(restaurants);
-
     // const [searchClicked, setSearchClicked] = useState("false");
+    
     useEffect(() => {
         //API call
         getRestaurants();
@@ -38,7 +32,13 @@ const Body = () => {
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
-    console.log("Render");
+    //console.log("Render");
+
+    const isOnline = useOnline();
+
+    if(!isOnline) {
+        return <h1>Offline, please check your internet connection!!</h1>
+    }
 
     if(allRestaurants?.length === 0) 
     return <Shimmer/> 

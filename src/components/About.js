@@ -25,9 +25,9 @@ class About extends React.Component {
                 <p>
                     This is the react studying tutorial
                 </p>
-                <ProfileFunctionalComponent />
-                <Profile name={"First Child"}/>
-                <Profile name={"second Child"}/>
+                <Profile />
+                {/* <Profile name={"First Child"}/>
+                <Profile name={"second Child"}/> */}
             </div>
         );
     }
