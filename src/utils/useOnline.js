@@ -23,7 +23,6 @@ const useOnline = () => {
 
     }, [])
 
- 
     return isOnline;   //returns true or false
 
 }

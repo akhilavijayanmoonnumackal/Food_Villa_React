@@ -1,11 +1,11 @@
 import { useState,useEffect } from "react";
 import Logo from '../assets/img/food.png';
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const loggedInUser = () => {
     //API call to check authentication
     return false;
-
 }
 
 const Title =  () => (
@@ -21,11 +21,11 @@ const Header = () => {
     // const [title, setTitle]=useState("Food Villa");
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isOnline = useOnline();
 
     useEffect(() => {
         console.log("useEffect");
     },[])
-
 
     console.log("render");
     return (
@@ -38,10 +38,12 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/instamart">Instamart</Link></li>
                     <li>Cart</li>
                     {/* <Link to="/login"><li>Login</li></Link> */}
                 </ul>
             </div>
+            <h1>{isOnline? "✅" : "🔴" }</h1>
             <ul>
             <Link to="/login"><li>
                 {isLoggedIn ? (
