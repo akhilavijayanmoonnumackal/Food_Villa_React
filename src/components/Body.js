@@ -23,7 +23,7 @@ const Body = () => {
         getRestaurants();
     },[]); 
 
-    async function getRestaurants() {
+    async function getRestaurants() { 
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.943811700000001&lng=76.3275467&page_type=DESKTOP_WEB_LISTING"
         );
@@ -50,10 +50,10 @@ const Body = () => {
 
     return (
         <>
-        <div className="search-container">
+        <div className="p-5">
             <input 
             type="text" 
-            className="search-input" 
+            className="focus:bg-slate-300 p-2 m-2" 
             placeholder="Search" 
             value={searchText}
             onChange={(e) => {
@@ -61,7 +61,7 @@ const Body = () => {
             }}
             />     
             {/* <h1>{searchClicked}</h1> */}
-            <button className="search-btn" onClick={() => {
+            <button className=" bg-slate-700 rounded-sm m-2 w-24 text-white hover:bg-orange-300" onClick={() => {
                 //need to filter data
                 const data = filterData(searchText, allRestaurants);
                 //update the state-restaurants 
@@ -70,7 +70,7 @@ const Body = () => {
             }}>Search </button>
 
         </div>
-        <div className="restaurant-list">
+        <div className="flex flex-wrap m-8">
             {filteredRestaurants.map((restaurant) => {
                 return (
                     <Link 
